@@ -43,7 +43,7 @@ export default function ModePage() {
               Choose Quiz Mode
             </h1>
             <p className="text-xl text-white/80">
-              Select how you'd like to create your vocabulary quiz
+              Select how you&apos;d like to create your vocabulary quiz
             </p>
           </div>
 

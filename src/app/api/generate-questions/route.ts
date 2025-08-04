@@ -154,7 +154,14 @@ export async function POST(request: NextRequest) {
 }
 
 function generateFallbackQuestionsFromWords(words: string[], category: string) {
-  const questions: any[] = [];
+  const questions: {
+    id: number;
+    word: string;
+    question: string;
+    options: string[];
+    correctAnswer: string;
+    explanation: string;
+  }[] = [];
   
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
@@ -186,7 +193,14 @@ function generateFallbackQuestions(category: string, questionCount: number) {
   };
   
   const words = wordLists[category as keyof typeof wordLists] || wordLists.general;
-  const questions: any[] = [];
+  const questions: {
+    id: number;
+    word: string;
+    question: string;
+    options: string[];
+    correctAnswer: string;
+    explanation: string;
+  }[] = [];
   
   for (let i = 0; i < Math.min(questionCount, words.length); i++) {
     const word = words[i];

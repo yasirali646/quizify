@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Clock, CheckCircle, XCircle, SkipForward, Trophy, Star, Loader2 } from "lucide-react";
+import { Clock, Trophy, Star, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import Confetti from "react-confetti";
 
@@ -95,7 +95,7 @@ export default function QuizPage() {
     }
   }, [quizState.timeLeft, quizState.isComplete, questions.length]);
 
-  const generateAIQuestionsFromWords = async (words: string[], category: string) => {
+  const generateAIQuestionsFromWords = async (words: string[], category: string | null) => {
     try {
       setIsLoading(true);
       toast.loading("Generating AI questions from your words...", { id: "ai-loading" });
@@ -168,7 +168,14 @@ export default function QuizPage() {
     return questions;
   };
 
-  const generateAIQuestions = async (settings: any, category: string) => {
+  interface QuizSettings {
+    attempts?: number;
+    timeLimit?: number;
+    questionLimit?: number;
+
+  }
+
+  const generateAIQuestions = async (settings: QuizSettings, category: string | null) => {
     try {
       setIsLoading(true);
       toast.loading("Generating AI questions...", { id: "ai-loading" });
@@ -220,7 +227,7 @@ export default function QuizPage() {
     }
   };
 
-  const generateFallbackQuestions = (category: string, questionCount: number): Question[] => {
+  const generateFallbackQuestions = (category: string | null, questionCount: number): Question[] => {
     const wordLists = {
       travel: ["itinerary", "accommodation", "destination", "sightseeing", "passport", "visa", "boarding", "departure", "arrival", "luggage"],
       friends: ["companionship", "loyalty", "trust", "bond", "friendship", "relationship", "connection", "support", "understanding", "care"],
@@ -468,7 +475,7 @@ export default function QuizPage() {
                   <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
                   <h1 className="text-4xl font-bold text-green-400 mb-4">Congratulations!</h1>
                   <p className="text-xl text-white/80 mb-6">
-                    You've successfully completed the quiz with an excellent score!
+                    You&apos;ve successfully completed the quiz with an excellent score!
                   </p>
                 </div>
               ) : (
@@ -476,7 +483,7 @@ export default function QuizPage() {
                   <Star className="w-16 h-16 text-blue-400 mx-auto mb-4" />
                   <h1 className="text-4xl font-bold text-blue-400 mb-4">Great Job!</h1>
                   <p className="text-xl text-white/80 mb-6">
-                    You're doing great! Keep practicing to improve your score.
+                    You&apos;re doing great! Keep practicing to improve your score.
                   </p>
                 </div>
               )}
