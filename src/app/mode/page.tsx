@@ -137,7 +137,7 @@ export default function ModePage() {
             <div className="inline-flex items-center bg-black/20 backdrop-blur-xl rounded-full px-6 py-3 shadow-lg border border-white/10">
               <BookOpen className="w-5 h-5 text-white mr-3" />
               <span className="text-white font-medium">
-                Category: {category?.charAt(0).toUpperCase() + category?.slice(1) || "General"}
+                Category: {category ? category.charAt(0).toUpperCase() + category.slice(1) : "General"}
               </span>
             </div>
           </div>
