@@ -59,6 +59,7 @@ export default function QuizPage() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmittingSentence, setIsSubmittingSentence] = useState(false);
 
   useEffect(() => {
     // Get quiz data from sessionStorage
@@ -315,6 +316,7 @@ export default function QuizPage() {
 
   const handleSentenceSubmit = async () => {
     if (sentenceInput.trim()) {
+      setIsSubmittingSentence(true);
       try {
         // Get AI analysis and enhancement
         const analysisResponse = await fetch('/api/analyze-sentence', {
@@ -371,6 +373,8 @@ export default function QuizPage() {
         }));
         setSentenceInput("");
         moveToNextQuestion(true);
+      } finally {
+        setIsSubmittingSentence(false);
       }
     }
   };
@@ -681,14 +685,22 @@ export default function QuizPage() {
                 <div className="flex space-x-4">
                   <button
                     onClick={handleSentenceSubmit}
-                    disabled={!sentenceInput.trim()}
-                    className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    disabled={!sentenceInput.trim() || isSubmittingSentence}
+                    className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                   >
-                    Submit (+3 points)
+                    {isSubmittingSentence ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Submit (+3 points)"
+                    )}
                   </button>
                   <button
                     onClick={handleSkipSentence}
-                    className="flex-1 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors border border-white/20"
+                    disabled={isSubmittingSentence}
+                    className="flex-1 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border border-white/20"
                   >
                     Skip
                   </button>
