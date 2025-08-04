@@ -9,7 +9,7 @@ export default function Footer() {
         </div>
         <div className="flex gap-4">
           <a 
-            href="https://github.com/" 
+            href="https://github.com/yasirali646/quizify" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="text-white/60 hover:text-white text-sm transition-colors focus:outline-none focus:ring-0 border-0"
