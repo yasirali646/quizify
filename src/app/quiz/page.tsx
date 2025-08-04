@@ -552,7 +552,7 @@ export default function QuizPage() {
                         <div className="mb-3">
                           <p className="text-white/60 text-sm mb-1">Your sentence:</p>
                           <p className="text-white bg-white/10 rounded p-2 border border-white/20">
-                            "{sentence.userSentence}"
+                            &quot;{sentence.userSentence}&quot;
                           </p>
                         </div>
 
@@ -561,7 +561,7 @@ export default function QuizPage() {
                           <div className="mb-3">
                             <p className="text-green-200 text-sm mb-1">AI Enhanced:</p>
                             <p className="text-green-100 bg-green-500/20 rounded p-2 border border-green-400/30">
-                              "{sentence.aiEnhanced}"
+                              &quot;{sentence.aiEnhanced}&quot;
                             </p>
                           </div>
                         )}
