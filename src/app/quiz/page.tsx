@@ -158,10 +158,10 @@ export default function QuizPage() {
       questions.push({
         id: i + 1,
         word: word,
-        question: `What is the meaning of "${word}"?`,
+        question: `What is the meaning of &quot;${word}&quot;?`,
         options: options,
         correctAnswer: word,
-        explanation: `The correct answer is "${word}"`
+        explanation: `The correct answer is &quot;${word}&quot;`
       });
     }
     
