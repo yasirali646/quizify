@@ -24,7 +24,7 @@ A modern, interactive IELTS vocabulary quiz application built with Next.js, Type
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/yasirali646/quizify
 cd quizify
 ```
 
@@ -36,10 +36,10 @@ npm install
 3. Set up environment variables:
 Create a `.env.local` file in the root directory:
 ```env
-OPENROUTER_API_KEY=your_openai_api_key_here
+OPENROUTER_API_KEY=your_openrouter_api_key_here
 ```
 
-4. Get your OpenAI API key:
+4. Get your OpenRouter API key:
 - Visit [OpenRouter Platform](https://openrouter.ai/settings/keys)
 - Create a new API key
 - Rename the `example.env.local` to `.env.local` file
