@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Settings, Sparkles, BookOpen, Play } from "lucide-react";
 
@@ -15,7 +15,7 @@ interface QuizSettings {
   timeLimit: number;
 }
 
-export default function AIPage() {
+function AIContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
@@ -263,5 +263,21 @@ export default function AIPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-white text-xl">Loading...</div>
+    </div>
+  );
+}
+
+export default function AIPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <AIContent />
+    </Suspense>
   );
 } 
