@@ -669,7 +669,7 @@ export default function QuizPage() {
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
               <div className="bg-black/30 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-8 max-w-md w-full">
                 <h3 className="text-xl font-semibold text-white mb-4">
-                  Great job! Now write a sentence using "{quizState.currentCorrectAnswer}"
+                  Great job! Now write a sentence using &quot;{quizState.currentCorrectAnswer}&quot;
                 </h3>
                 <textarea
                   value={sentenceInput}
