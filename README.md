@@ -127,7 +127,7 @@ src/
 
 ## API Integration
 
-The application uses OpenAI's GPT-3.5-turbo model to generate contextual vocabulary questions based on:
+The application uses OpenAI's gpt-oss-20b model to generate contextual vocabulary questions based on:
 - Selected category
 - Difficulty level
 - Question type

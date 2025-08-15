@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     Focus on IELTS-level English and help the user improve their vocabulary usage.`;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: process.env.OPENROUTER_MODEL || 'gpt-3.5-turbo',
       messages: [
         {
           role: "system",
